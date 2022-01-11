@@ -18,6 +18,7 @@ public class Seat {
     //@GeneratedValue(strategy = GenerationType.IDENTITY)
     private int seat_code;
 
+    @Column(name="user_id", unique = true)
     private String user_id;
 
     //private LocalDateTime current_time;

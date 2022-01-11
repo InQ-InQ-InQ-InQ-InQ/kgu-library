@@ -52,6 +52,24 @@ public class SeatRepositoryTest {
 
     @Test
     public void emptySeatTest() {
+        Seat seat = new Seat();
+        seat.setSeat_code(1);
+        seat.setUser_id("kgu");
+        seatRepository.save(seat);
 
+        Seat seat2 = new Seat();
+        seat.setSeat_code(2);
+        seat.setUser_id("kgu2");
+        seatRepository.save(seat);
+
+        Seat seat3 = new Seat();
+        seat.setSeat_code(3);
+        seatRepository.save(seat);
+
+        List<Seat> getSeat = seatService.emptySeat();
+
+        for(Seat emptyList: getSeat) {
+            assertThat(String.valueOf(emptyList.getSeat_code()).equals("3"));
+        }
     }
 }
