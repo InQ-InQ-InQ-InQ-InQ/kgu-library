@@ -28,14 +28,14 @@ public class SeatController {
         return "/";
     }
 
-    @GetMapping("/seat/{seat_id}")
+    @GetMapping("/seat/{seatId}")
     public String detail(@PathVariable("seat_id") int id, Model model) {
         Seat seat = seatRepository.findById(id).get();
         model.addAttribute("seat", seat);
         return "..";
     }
 
-    @PutMapping("/seat/{seat_id}")
+    @PutMapping("/seat/{seatId}")
     public String reservation(Seat seat) {
         /*Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
         User user = (User) authentication.getPrincipal();

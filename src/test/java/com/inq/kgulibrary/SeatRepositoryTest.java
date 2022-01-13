@@ -26,50 +26,50 @@ public class SeatRepositoryTest {
     @Test
     public void InsertSeat() {
         Seat seat = new Seat();
-        seat.setSeat_code(1);
+        seat.setSeatId(1);
 
         seatRepository.save(seat);
 
         List<Seat> getSeat = seatRepository.findAll();
 
         for(Seat seatList : getSeat) {
-            assertThat(String.valueOf(seatList.getSeat_code()).equals("1"));
+            assertThat(String.valueOf(seatList.getSeatId()).equals("1"));
         }
     }
 
     @Test
     public void reservationTest() {
         Seat seat = new Seat();
-        seat.setSeat_code(1);
-        seat.setUser_id("kgu");
+        seat.setSeatId(1);
+        seat.setUserId("kgu");
         seatRepository.save(seat);
 
         seatService.reservation(1, "kgu");
 
         Optional<Seat> s = seatRepository.findById(1);
-        assertThat(s.get().getUser_id().equals("kgu"));
+        assertThat(s.get().getUserId().equals("kgu"));
     }
 
     @Test
     public void emptySeatTest() {
         Seat seat = new Seat();
-        seat.setSeat_code(1);
-        seat.setUser_id("kgu");
+        seat.setSeatId(1);
+        seat.setUserId("kgu");
         seatRepository.save(seat);
 
         Seat seat2 = new Seat();
-        seat.setSeat_code(2);
-        seat.setUser_id("kgu2");
-        seatRepository.save(seat);
+        seat2.setSeatId(2);
+        seat2.setUserId("kgu2");
+        seatRepository.save(seat2);
 
         Seat seat3 = new Seat();
-        seat.setSeat_code(3);
-        seatRepository.save(seat);
+        seat3.setSeatId(3);
+        seatRepository.save(seat3);
 
         List<Seat> getSeat = seatService.emptySeat();
 
         for(Seat emptyList: getSeat) {
-            assertThat(String.valueOf(emptyList.getSeat_code()).equals("3"));
+            assertThat(String.valueOf(emptyList.getSeatId()).equals("3"));
         }
     }
 }

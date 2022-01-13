@@ -5,21 +5,19 @@ import lombok.*;
 import javax.persistence.*;
 import java.time.LocalDateTime;
 
-@Entity
+@Builder
+@Data
 @AllArgsConstructor
 @NoArgsConstructor
-@Builder
-@ToString
-@Getter
-@Setter
+@Entity
 public class Seat {
 
     @Id
     //@GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int seat_code;
+    private int seatId;
 
-    @Column(name="user_id", unique = true)
-    private String user_id;
+    @Column(name="userId", unique = true)
+    private String userId;
 
     //private LocalDateTime current_time;
 }

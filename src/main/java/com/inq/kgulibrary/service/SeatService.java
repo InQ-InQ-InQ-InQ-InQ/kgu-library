@@ -16,13 +16,13 @@ public class SeatService {
 
     private final SeatRepository seatRepository;
 
-    public int reservation(int id, String user_id) {
+    public int reservation(int id, String userId) {
         Optional<Seat> oSeat = seatRepository.findById(id);
         if(oSeat.isPresent())
             return 0;
 
         Seat seat = oSeat.get();
-        seat.setUser_id(user_id);
+        seat.setUserId(userId);
         //seat.setCurrent_time(LocalDateTime.now());
         seatRepository.save(seat);
         return 1;
@@ -32,7 +32,7 @@ public class SeatService {
         List<Seat> seatList = seatRepository.findAll();
         List<Seat> emptyList = new ArrayList<>();
         for (Seat seat: seatList) {
-            if (seat.getUser_id().isEmpty())
+            if (seat.getUserId() == null)
                 emptyList.add(seat);
         }
         return emptyList;
