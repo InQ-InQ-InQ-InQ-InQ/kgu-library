@@ -29,6 +29,7 @@ public class SeatService {
         return 1;
     }
 
+
     public int checkout(int id) {
         Optional<Seat> oSeat = seatRepository.findById(id);
         if(!oSeat.isPresent())
@@ -40,6 +41,7 @@ public class SeatService {
         seatRepository.save(seat);
         return 1;
     }
+
 
     public List<Seat> emptySeat() {
         List<Seat> seatList = seatRepository.findAll();

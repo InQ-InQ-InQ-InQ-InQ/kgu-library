@@ -3,7 +3,6 @@ package com.inq.kgulibrary;
 import com.inq.kgulibrary.domain.Seat;
 import com.inq.kgulibrary.repository.SeatRepository;
 import com.inq.kgulibrary.service.SeatService;
-import org.hamcrest.core.IsNull;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.annotation.Commit;
@@ -14,7 +13,6 @@ import java.util.List;
 import java.util.Optional;
 
 import static org.assertj.core.api.Assertions.assertThat;
-import static org.hamcrest.CoreMatchers.*;
 
 @SpringBootTest
 @Transactional
@@ -45,11 +43,11 @@ public class SeatRepositoryTest {
         seat.setSeatId(1);
         seatRepository.save(seat);
 
-
         seatService.reservation(1, "kgu");
 
         Optional<Seat> s = seatRepository.findById(1);
         assertThat(s.get().getUserId().equals("kgu"));
+
 
     }
 
