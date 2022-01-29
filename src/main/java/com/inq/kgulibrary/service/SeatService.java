@@ -18,11 +18,24 @@ public class SeatService {
 
     public int reservation(int id, String userId) {
         Optional<Seat> oSeat = seatRepository.findById(id);
-        if(oSeat.isPresent())
+
+        if(!oSeat.isPresent())
             return 0;
 
         Seat seat = oSeat.get();
         seat.setUserId(userId);
+        //seat.setCurrent_time(LocalDateTime.now());
+        seatRepository.save(seat);
+        return 1;
+    }
+
+    public int checkout(int id) {
+        Optional<Seat> oSeat = seatRepository.findById(id);
+        if(!oSeat.isPresent())
+            return 0;
+
+        Seat seat = oSeat.get();
+        seat.setUserId(null);
         //seat.setCurrent_time(LocalDateTime.now());
         seatRepository.save(seat);
         return 1;

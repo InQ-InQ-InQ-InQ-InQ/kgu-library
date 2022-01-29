@@ -24,7 +24,7 @@ public class SeatController {
     @GetMapping("/seat/emptySeat")
     public String emptySeat(Model model) {
         List<Seat> seatList = seatService.emptySeat();
-        model.addAttribute("seats", seatList);
+        model.addAttribute("seatList", seatList);
         return "/";
     }
 
